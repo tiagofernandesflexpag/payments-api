@@ -1,6 +1,6 @@
 package br.com.flexpag.payments.controller.dto;
 
-public record CepResultRecord(
+public record CepResult(
         String cep,
         String logradouro,
         String complemento,
