@@ -1,13 +1,14 @@
 package br.com.flexpag.payments.model.address;
 
 import br.com.flexpag.payments.model.BaseEntity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import br.com.flexpag.payments.model.client.Client;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
 
+@Table(name = "address")
+@Entity(name = "Address")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,5 +25,8 @@ public class Address extends BaseEntity {
     private String city;
     private String state;
     private String complement;
+
+    @OneToOne(mappedBy = "address")
+    private Client client;
 
 }

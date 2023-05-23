@@ -1,6 +1,8 @@
 package br.com.flexpag.payments.model.transaction;
 
 import br.com.flexpag.payments.model.BaseEntity;
+import br.com.flexpag.payments.model.address.Address;
+import br.com.flexpag.payments.model.client.Client;
 import br.com.flexpag.payments.model.purchase.Purchase;
 import br.com.flexpag.payments.model.transaction.enums.PaymentTypeEnum;
 import br.com.flexpag.payments.model.transaction.enums.StatusEnum;
@@ -12,8 +14,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@Table(name = "purchases")
-@Entity(name = "Purchase")
+@Table(name = "transaction")
+@Entity(name = "Transaction")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,7 +35,9 @@ public class Transaction extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
     private Long authorizationCode;
-    //Perguntar sobre os relacionamentos
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "purchase_id", referencedColumnName = "id")
     private Purchase purchase;
 
 }

@@ -5,6 +5,7 @@ import br.com.flexpag.payments.model.BaseEntity;
 import br.com.flexpag.payments.model.address.Address;
 import br.com.flexpag.payments.model.client.enums.ContractTypeEnum;
 import br.com.flexpag.payments.model.client.enums.UserRole;
+import br.com.flexpag.payments.model.purchase.Purchase;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.UUID;
 
-@Table(name = "clients")
+@Table(name = "client")
 @Entity(name = "Client")
 @Getter
 @NoArgsConstructor
@@ -32,7 +33,6 @@ public class Client extends BaseEntity implements Assignment {
 
     @Enumerated(EnumType.STRING)
     private ContractTypeEnum contract;
-
     private Long contractNumber;
     private String email;
     private String password;
@@ -40,10 +40,12 @@ public class Client extends BaseEntity implements Assignment {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    //persistência em cascata
-    @OneToOne
-    @JoinColumn(name = "address_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
+
+    @OneToMany(mappedBy = "client")
+    private List<Purchase> purchases;
 
     @Override
     public List<Double> getFees(ContractTypeEnum contractTypeEnum) {

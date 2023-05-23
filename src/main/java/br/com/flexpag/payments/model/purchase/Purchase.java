@@ -3,6 +3,7 @@ package br.com.flexpag.payments.model.purchase;
 import br.com.flexpag.payments.model.BaseEntity;
 import br.com.flexpag.payments.model.client.Client;
 import br.com.flexpag.payments.model.invoice.Invoice;
+import br.com.flexpag.payments.model.transaction.Transaction;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -10,8 +11,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.UUID;
+import java.util.List;
 
-@Table(name = "purchases")
+@Table(name = "purchase")
 @Entity(name = "Purchase")
 @Getter
 @NoArgsConstructor
@@ -28,13 +30,19 @@ public class Purchase extends BaseEntity {
     private Long invoiceAmount;
     private Double rate;
 
-    //Fazer e perguntar sobre os relacionamentos;
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "invoice_id")
-    private Invoice invoice;
+    @OneToOne(mappedBy = "purchase")
+    private Transaction transaction;
+
+    @OneToMany
+    @JoinTable(
+            name = "purchase_invoice",
+            joinColumns = {@JoinColumn(name = "purchase_id")},
+            inverseJoinColumns = {@JoinColumn(name = "invoice_id")}
+    )
+    private List<Invoice> invoices;
 
 }
