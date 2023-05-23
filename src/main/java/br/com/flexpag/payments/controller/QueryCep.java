@@ -1,6 +1,6 @@
-package br.com.flexpag.payments.controller.cep;
+package br.com.flexpag.payments.controller;
 
-import br.com.flexpag.payments.controller.dto.CepResult;
+import br.com.flexpag.payments.model.dto.response.CepResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

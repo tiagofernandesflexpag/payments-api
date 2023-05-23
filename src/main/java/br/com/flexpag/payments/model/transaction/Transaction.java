@@ -1,8 +1,6 @@
 package br.com.flexpag.payments.model.transaction;
 
 import br.com.flexpag.payments.model.BaseEntity;
-import br.com.flexpag.payments.model.address.Address;
-import br.com.flexpag.payments.model.client.Client;
 import br.com.flexpag.payments.model.purchase.Purchase;
 import br.com.flexpag.payments.model.transaction.enums.PaymentTypeEnum;
 import br.com.flexpag.payments.model.transaction.enums.StatusEnum;

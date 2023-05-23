@@ -1,13 +1,11 @@
 package br.com.flexpag.payments.model.invoice;
 
 import br.com.flexpag.payments.model.BaseEntity;
-import br.com.flexpag.payments.model.purchase.Purchase;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 
 import java.time.LocalDate;
 import java.util.UUID;

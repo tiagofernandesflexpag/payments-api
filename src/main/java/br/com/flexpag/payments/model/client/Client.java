@@ -1,6 +1,7 @@
 package br.com.flexpag.payments.model.client;
 
 
+import br.com.flexpag.payments.model.dto.request.CreateClient;
 import br.com.flexpag.payments.model.BaseEntity;
 import br.com.flexpag.payments.model.address.Address;
 import br.com.flexpag.payments.model.client.enums.ContractTypeEnum;
@@ -12,6 +13,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,6 +52,20 @@ public class Client extends BaseEntity implements Assignment {
     @Override
     public List<Double> getFees(ContractTypeEnum contractTypeEnum) {
         return null;
+    }
+
+    public Client(CreateClient clientData) {
+        this.uuid = UUID.randomUUID();
+        this.name = clientData.name();
+        this.identity = clientData.identity();
+        this.contract = clientData.contract();
+        this.contractNumber = clientData.contractNumber();
+        this.email = clientData.email();
+        this.password = clientData.password();
+        this.role = this.getRole();
+        this.address = new Address(clientData.address());
+        setCreatedAt(LocalDate.now());
+        setUpdatedAt(LocalDate.now());
     }
 
 }

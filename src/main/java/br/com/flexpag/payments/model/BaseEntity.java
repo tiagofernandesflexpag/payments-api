@@ -10,7 +10,6 @@ import java.time.LocalDate;
 public abstract class BaseEntity {
 
     //pre persistencia, pre update - dar uma olhada
-
     LocalDate createdAt;
     LocalDate updatedAt;
     LocalDate removedAt;
