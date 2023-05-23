@@ -25,10 +25,14 @@ public class Client extends BaseEntity implements Assignment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
     private String name;
     private String identity;
+
+    @Enumerated(EnumType.STRING)
     private ContractTypeEnum contract;
+
     private Long contractNumber;
     private String email;
     private String password;
@@ -36,7 +40,9 @@ public class Client extends BaseEntity implements Assignment {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    @Embedded
+    //persistência em cascata
+    @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @Override

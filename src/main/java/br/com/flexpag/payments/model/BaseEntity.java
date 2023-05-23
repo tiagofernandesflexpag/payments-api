@@ -9,6 +9,8 @@ import java.time.LocalDate;
 @Component
 public abstract class BaseEntity {
 
+    //pre persistencia, pre update - dar uma olhada
+
     LocalDate createdAt;
     LocalDate updatedAt;
     LocalDate removedAt;

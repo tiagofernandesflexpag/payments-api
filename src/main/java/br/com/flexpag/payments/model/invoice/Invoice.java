@@ -21,6 +21,7 @@ public class Invoice extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
     private LocalDate dueDate;
     private String barcode;

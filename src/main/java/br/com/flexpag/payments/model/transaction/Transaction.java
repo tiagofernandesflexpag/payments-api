@@ -23,8 +23,14 @@ public class Transaction extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
+
+    @Enumerated(EnumType.STRING)
     private PaymentTypeEnum paymentType;
+
+    @Enumerated(EnumType.STRING)
     private StatusEnum status;
     private Long authorizationCode;
     //Perguntar sobre os relacionamentos
