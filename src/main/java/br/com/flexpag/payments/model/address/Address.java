@@ -1,6 +1,6 @@
 package br.com.flexpag.payments.model.address;
 
-import br.com.flexpag.payments.model.dto.request.AddressData;
+import br.com.flexpag.payments.controller.dto.request.AddressData;
 import br.com.flexpag.payments.model.BaseEntity;
 import br.com.flexpag.payments.model.client.Client;
 import jakarta.persistence.*;

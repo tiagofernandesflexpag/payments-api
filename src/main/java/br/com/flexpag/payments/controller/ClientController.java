@@ -1,7 +1,7 @@
 package br.com.flexpag.payments.controller;
 
-import br.com.flexpag.payments.model.dto.request.CreateClient;
-import br.com.flexpag.payments.model.dto.response.ClientDetails;
+import br.com.flexpag.payments.controller.dto.request.CreateClient;
+import br.com.flexpag.payments.controller.dto.response.ClientDetails;
 import br.com.flexpag.payments.model.client.Client;
 import br.com.flexpag.payments.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;

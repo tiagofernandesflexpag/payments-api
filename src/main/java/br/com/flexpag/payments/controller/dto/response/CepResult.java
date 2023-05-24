@@ -1,4 +1,4 @@
-package br.com.flexpag.payments.model.dto.response;
+package br.com.flexpag.payments.controller.dto.response;
 
 public record CepResult(
         String logradouro,

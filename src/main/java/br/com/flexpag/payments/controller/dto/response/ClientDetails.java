@@ -1,4 +1,4 @@
-package br.com.flexpag.payments.model.dto.response;
+package br.com.flexpag.payments.controller.dto.response;
 
 import br.com.flexpag.payments.model.address.Address;
 import br.com.flexpag.payments.model.client.Client;

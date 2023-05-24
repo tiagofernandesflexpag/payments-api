@@ -1,7 +1,7 @@
 package br.com.flexpag.payments.model.client;
 
 
-import br.com.flexpag.payments.model.dto.request.CreateClient;
+import br.com.flexpag.payments.controller.dto.request.CreateClient;
 import br.com.flexpag.payments.model.BaseEntity;
 import br.com.flexpag.payments.model.address.Address;
 import br.com.flexpag.payments.model.client.enums.ContractTypeEnum;

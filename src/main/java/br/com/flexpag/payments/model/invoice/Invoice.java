@@ -1,6 +1,7 @@
 package br.com.flexpag.payments.model.invoice;
 
 import br.com.flexpag.payments.model.BaseEntity;
+import br.com.flexpag.payments.controller.dto.request.InvoiceData;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -29,4 +30,14 @@ public class Invoice extends BaseEntity {
     private Boolean paid;
     private Long contractNumber;
 
+    public Invoice(InvoiceData invoiceData) {
+        this.uuid = UUID.randomUUID();
+        this.dueDate = invoiceData.dueDate();
+        this.amount = invoiceData.amount();
+        this.barcode = invoiceData.barcode();
+        this.paid = false;
+        this.contractNumber = invoiceData.contractNumber();
+        setCreatedAt(LocalDate.now());
+        setUpdatedAt(LocalDate.now());
+    }
 }

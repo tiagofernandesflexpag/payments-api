@@ -1,4 +1,4 @@
-package br.com.flexpag.payments.model.dto.request;
+package br.com.flexpag.payments.controller.dto.request;
 
 import br.com.flexpag.payments.model.client.enums.ContractTypeEnum;
 import jakarta.validation.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package br.com.flexpag.payments.model.dto.request;
+package br.com.flexpag.payments.controller.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 
