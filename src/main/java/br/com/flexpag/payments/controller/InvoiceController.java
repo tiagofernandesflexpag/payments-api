@@ -2,7 +2,7 @@ package br.com.flexpag.payments.controller;
 
 import br.com.flexpag.payments.controller.dto.request.InvoiceData;
 import br.com.flexpag.payments.model.invoice.Invoice;
-import br.com.flexpag.payments.service.invoice.InvoiceService;
+import br.com.flexpag.payments.service.InvoiceService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
