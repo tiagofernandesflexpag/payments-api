@@ -1,12 +1,10 @@
 package br.com.flexpag.payments.controller;
 
-import br.com.flexpag.payments.controller.dto.response.CepResponse;
+import br.com.flexpag.payments.controller.dto.response.CepDetailsResponse;
 import br.com.flexpag.payments.controller.dto.response.RestCepResult;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
@@ -14,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 public class QueryCepController {
 
     @GetMapping("{cep}")
-    public CepResponse consultaCep (@PathVariable("cep") String cep) {
+    public CepDetailsResponse consultaCep (@PathVariable("cep") String cep) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -26,7 +24,7 @@ public class QueryCepController {
 
         RestCepResult restCepResult = viaCepReponse.getBody();
 
-        CepResponse cepResponse = new CepResponse(
+        CepDetailsResponse cepDetailsResponse = new CepDetailsResponse(
                 restCepResult.logradouro(),
                 "",
                 restCepResult.localidade(),
@@ -34,7 +32,7 @@ public class QueryCepController {
                 ""
         );
 
-        return cepResponse;
+        return cepDetailsResponse;
     }
 
 }

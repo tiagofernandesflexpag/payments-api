@@ -5,8 +5,4 @@ public record RestCepResult(
         String bairro,
         String localidade,
         String uf
-) {
-
-
-
-}
+) {}

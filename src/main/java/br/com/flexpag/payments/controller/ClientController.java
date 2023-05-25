@@ -1,7 +1,7 @@
 package br.com.flexpag.payments.controller;
 
-import br.com.flexpag.payments.controller.dto.request.CreateClient;
-import br.com.flexpag.payments.controller.dto.response.ClientDetails;
+import br.com.flexpag.payments.controller.dto.request.CreateClientData;
+import br.com.flexpag.payments.controller.dto.response.ClientDetailsResponse;
 import br.com.flexpag.payments.model.client.Client;
 import br.com.flexpag.payments.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +23,17 @@ public class ClientController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity createClient(@RequestBody @Valid CreateClient createClientDTO, UriComponentsBuilder uriBuilder){
+    public ResponseEntity createClient(@RequestBody @Valid CreateClientData createClientDataDTO, UriComponentsBuilder uriBuilder){
 
-    var client = new Client(createClientDTO);
+    var client = new Client(createClientDataDTO);
 
     clientRepository.save(client);
 
-        var uri = uriBuilder.path("/client/{id}")
+        var uri = uriBuilder.path("/cliente/{id}")
                 .buildAndExpand(client.getId())
                 .toUri();
 
-        return ResponseEntity.created(uri).body(new ClientDetails(client));
+        return ResponseEntity.created(uri).body(new ClientDetailsResponse(client));
     }
-
 
 }

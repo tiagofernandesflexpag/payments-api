@@ -1,17 +1,15 @@
 package br.com.flexpag.payments.model.client;
 
 
-import br.com.flexpag.payments.controller.dto.request.CreateClient;
+import br.com.flexpag.payments.controller.dto.request.CreateClientData;
 import br.com.flexpag.payments.model.BaseEntity;
 import br.com.flexpag.payments.model.address.Address;
 import br.com.flexpag.payments.model.client.enums.ContractTypeEnum;
 import br.com.flexpag.payments.model.client.enums.UserRole;
 import br.com.flexpag.payments.model.purchase.Purchase;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,6 +18,7 @@ import java.util.UUID;
 @Table(name = "client")
 @Entity(name = "Client")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -46,7 +45,8 @@ public class Client extends BaseEntity implements Assignment {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client",fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Purchase> purchases;
 
     @Override
@@ -54,7 +54,7 @@ public class Client extends BaseEntity implements Assignment {
         return null;
     }
 
-    public Client(CreateClient clientData) {
+    public Client(CreateClientData clientData) {
         this.uuid = UUID.randomUUID();
         this.name = clientData.name();
         this.identity = clientData.identity();

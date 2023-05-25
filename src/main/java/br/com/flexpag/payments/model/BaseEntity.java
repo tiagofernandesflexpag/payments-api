@@ -2,11 +2,13 @@ package br.com.flexpag.payments.model;
 
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
-import org.springframework.stereotype.Component;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class BaseEntity {
 
