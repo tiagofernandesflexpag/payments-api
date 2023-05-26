@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class InvoiceController {
     InvoiceService invoiceService;
 
     @PostMapping
+    @Transactional
     public ResponseEntity<Invoice> addInvoice(@RequestBody @Valid InvoiceData invoiceData){
 
         invoiceService.addInvoice(invoiceData);

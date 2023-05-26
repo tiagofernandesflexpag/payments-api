@@ -8,6 +8,7 @@ import br.com.flexpag.payments.service.PurchaseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class PurchaseController {
     PurchaseService purchaseService;
 
     @PostMapping
+    @Transactional
     public ResponseEntity<PurchaseResponse> createPurchase(@RequestBody @Valid PurchaseData purchaseData){
 
         Purchase purchase = purchaseService.createPurchase(purchaseData);
