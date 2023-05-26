@@ -8,15 +8,12 @@ import br.com.flexpag.payments.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("cliente")
+@RequestMapping("client")
 public class ClientController {
 
     @Autowired
@@ -28,13 +25,24 @@ public class ClientController {
 
         var client = clientService.createClient(createClientData);
 
-        var uri = uriBuilder.path("/cliente/{id}")
+        var uri = uriBuilder.path("/client/{id}")
                 .buildAndExpand(client.getId())
                 .toUri();
 
         var clientResponse = new ClientDetailsResponse(client);
 
         return ResponseEntity.created(uri).body(clientResponse);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity getClient(@PathVariable Long id){
+
+        var client = clientService.getClient(id);
+
+        var clientResponse = new ClientDetailsResponse(client);
+
+        return ResponseEntity.ok().body(clientResponse);
+
     }
 
 }
