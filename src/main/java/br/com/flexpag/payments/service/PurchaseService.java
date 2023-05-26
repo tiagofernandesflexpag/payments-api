@@ -30,10 +30,9 @@ public class PurchaseService {
         Client client = clientRepository.findById(purchaseData.clientId())
                 .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado"));
 
-        Purchase purchase = new Purchase(purchaseData, client);
-
         List<Invoice> invoices = invoiceRepository.findAllById(purchaseData.invoiceIds());
-        purchase.setInvoices(invoices);
+
+        Purchase purchase = new Purchase(purchaseData, client, invoices);
 
         return purchaseRepository.save(purchase);
 

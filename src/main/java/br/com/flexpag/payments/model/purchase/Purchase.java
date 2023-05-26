@@ -50,12 +50,13 @@ public class Purchase extends BaseEntity {
     )
     private List<Invoice> invoices;
 
-    public Purchase(PurchaseData purchaseData, Client client){
+    public Purchase(PurchaseData purchaseData, Client client, List<Invoice> invoices){
         this.uuid = UUID.randomUUID();
         this.amount = purchaseData.amount();
         this.invoiceAmount = purchaseData.invoiceAmount();
         this.rate = purchaseData.rate();
         this.client = client;
+        this.invoices = invoices;
         setCreatedAt(LocalDate.now());
         setUpdatedAt(LocalDate.now());
     }
