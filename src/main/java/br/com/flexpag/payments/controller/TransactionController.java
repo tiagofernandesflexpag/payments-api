@@ -40,6 +40,9 @@ public class TransactionController {
 
         }
 
+        //Por causa do relacionamento 1pN a tabela transactions só aceita uma transação por purchase,
+        // mesmo que tenha sido negada.
+
     }
 
 }

@@ -1,6 +1,7 @@
 package br.com.flexpag.payments.controller;
 
 import br.com.flexpag.payments.controller.dto.request.InvoiceData;
+import br.com.flexpag.payments.controller.dto.response.CreateInvoiceResponse;
 import br.com.flexpag.payments.model.invoice.Invoice;
 import br.com.flexpag.payments.service.InvoiceService;
 import jakarta.validation.Valid;
@@ -21,11 +22,13 @@ public class InvoiceController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Invoice> addInvoice(@RequestBody @Valid InvoiceData invoiceData){
+    public ResponseEntity<CreateInvoiceResponse> addInvoice(@RequestBody @Valid InvoiceData invoiceData){
 
-        invoiceService.addInvoice(invoiceData);
+        var invoice = invoiceService.addInvoice(invoiceData);
 
-        return ResponseEntity.ok().body(new Invoice(invoiceData));
+        var invoiceResponse = new CreateInvoiceResponse(invoice);
+
+        return ResponseEntity.ok().body(invoiceResponse);
 
     }
 
