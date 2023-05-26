@@ -1,10 +1,11 @@
 package br.com.flexpag.payments.controller.dto.request;
 
 import br.com.flexpag.payments.model.client.enums.ContractTypeEnum;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record CreateClient(
+public record CreateClientData(
         @NotBlank
         String name,
         @NotBlank
@@ -18,6 +19,7 @@ public record CreateClient(
         @NotNull
         Long contractNumber,
         @NotBlank
+        @Valid
         AddressData address
 
 ) {}

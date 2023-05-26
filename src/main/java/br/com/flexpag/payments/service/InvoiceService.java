@@ -1,4 +1,4 @@
-package br.com.flexpag.payments.service.invoice;
+package br.com.flexpag.payments.service;
 
 import br.com.flexpag.payments.controller.dto.request.InvoiceData;
 import br.com.flexpag.payments.model.invoice.Invoice;

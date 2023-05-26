@@ -3,6 +3,7 @@ package br.com.flexpag.payments.model.address;
 import br.com.flexpag.payments.controller.dto.request.AddressData;
 import br.com.flexpag.payments.model.BaseEntity;
 import br.com.flexpag.payments.model.client.Client;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +12,8 @@ import java.util.UUID;
 
 @Table(name = "address")
 @Entity(name = "Address")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -28,7 +30,8 @@ public class Address extends BaseEntity {
     private String state;
     private String complement;
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Client client;
 
     public Address(AddressData addressData) {

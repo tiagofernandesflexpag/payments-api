@@ -3,10 +3,7 @@ package br.com.flexpag.payments.model.invoice;
 import br.com.flexpag.payments.model.BaseEntity;
 import br.com.flexpag.payments.controller.dto.request.InvoiceData;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -14,6 +11,7 @@ import java.util.UUID;
 @Table(name = "invoice")
 @Entity(name = "Invoice")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
