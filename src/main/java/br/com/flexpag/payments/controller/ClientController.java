@@ -4,36 +4,45 @@ import br.com.flexpag.payments.controller.dto.request.CreateClientData;
 import br.com.flexpag.payments.controller.dto.response.ClientDetailsResponse;
 import br.com.flexpag.payments.model.client.Client;
 import br.com.flexpag.payments.repository.ClientRepository;
+import br.com.flexpag.payments.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("cliente")
+@RequestMapping("client")
 public class ClientController {
 
     @Autowired
-    ClientRepository clientRepository;
+    ClientService clientService;
 
     @PostMapping
     @Transactional
-    public ResponseEntity createClient(@RequestBody @Valid CreateClientData createClientDataDTO, UriComponentsBuilder uriBuilder){
+    public ResponseEntity createClient(@RequestBody @Valid CreateClientData createClientData, UriComponentsBuilder uriBuilder){
 
-    var client = new Client(createClientDataDTO);
+        var client = clientService.createClient(createClientData);
 
-    clientRepository.save(client);
-
-        var uri = uriBuilder.path("/cliente/{id}")
+        var uri = uriBuilder.path("/client/{id}")
                 .buildAndExpand(client.getId())
                 .toUri();
 
-        return ResponseEntity.created(uri).body(new ClientDetailsResponse(client));
+        var clientResponse = new ClientDetailsResponse(client);
+
+        return ResponseEntity.created(uri).body(clientResponse);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity getClient(@PathVariable Long id){
+
+        var client = clientService.getClient(id);
+
+        var clientResponse = new ClientDetailsResponse(client);
+
+        return ResponseEntity.ok().body(clientResponse);
+
     }
 
 }

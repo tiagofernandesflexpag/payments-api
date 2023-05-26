@@ -1,5 +1,6 @@
 package br.com.flexpag.payments.controller.dto.response;
 
+import br.com.flexpag.payments.model.transaction.Transaction;
 import br.com.flexpag.payments.model.transaction.enums.PaymentTypeEnum;
 import br.com.flexpag.payments.model.transaction.enums.StatusEnum;
 
@@ -12,4 +13,12 @@ public record TransactionResponse(
         StatusEnum status,
         Integer instalments,
         Long purchaseId
-) {}
+) {
+
+    public TransactionResponse(Transaction transaction){
+        this(transaction.getId(), transaction.getUuid(), transaction.getPaymentType(), transaction.getStatus(),
+                transaction.getInstalments(), transaction.getPurchase().getId()
+        );
+    }
+
+}

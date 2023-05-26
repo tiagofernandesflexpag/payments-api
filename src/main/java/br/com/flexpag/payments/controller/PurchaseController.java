@@ -30,16 +30,7 @@ public class PurchaseController {
 
         Purchase purchase = purchaseService.createPurchase(purchaseData);
 
-        PurchaseResponse purchaseResponse = new PurchaseResponse(
-                purchase.getCreatedAt(),
-                purchase.getUpdatedAt(),
-                purchase.getId(),
-                purchase.getUuid(),
-                purchase.getAmount(),
-                purchase.getInvoiceAmount(),
-                purchase.getRate(),
-                purchase.getClient().getId()
-        );
+        PurchaseResponse purchaseResponse = new PurchaseResponse(purchase);
 
         return ResponseEntity.ok(purchaseResponse);
 
