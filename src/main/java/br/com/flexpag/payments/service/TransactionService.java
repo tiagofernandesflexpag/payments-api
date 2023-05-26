@@ -2,7 +2,6 @@ package br.com.flexpag.payments.service;
 
 import br.com.flexpag.payments.controller.dto.request.PersistTransactionData;
 import br.com.flexpag.payments.exceptions.PaymentStatusException;
-import br.com.flexpag.payments.model.purchase.Purchase;
 import br.com.flexpag.payments.model.transaction.Transaction;
 import br.com.flexpag.payments.model.transaction.enums.StatusEnum;
 import br.com.flexpag.payments.repository.PurchaseRepository;
@@ -10,7 +9,6 @@ import br.com.flexpag.payments.repository.TransactionRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import static br.com.flexpag.payments.util.RandomPaymentStatus.getRandomStatus;
 
@@ -22,6 +20,9 @@ public class TransactionService {
 
     @Autowired
     PurchaseRepository purchaseRepository;
+
+    @Autowired
+    InvoiceService invoiceService;
 
     public Transaction persistTransaction(PersistTransactionData persistTransactionData){
 
@@ -37,6 +38,8 @@ public class TransactionService {
         if(randomStatus.equals(StatusEnum.PENDING) || randomStatus.equals(StatusEnum.CANCELLED)){
             throw new PaymentStatusException("Pagamento não autorizado");
         }
+
+        invoiceService.updatePaymentStatus(purchaseObject.getId());
 
         return savedTransaction;
 
