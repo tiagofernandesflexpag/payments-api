@@ -3,7 +3,7 @@ package br.com.flexpag.payments.controller;
 import br.com.flexpag.payments.controller.dto.request.PersistTransactionData;
 import br.com.flexpag.payments.controller.dto.response.TransactionResponse;
 import br.com.flexpag.payments.exceptions.PaymentStatusException;
-import br.com.flexpag.payments.service.TransactionService;
+import br.com.flexpag.payments.service.impl.TransactionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

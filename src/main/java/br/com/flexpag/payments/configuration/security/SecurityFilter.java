@@ -1,7 +1,7 @@
 package br.com.flexpag.payments.configuration.security;
 
 import br.com.flexpag.payments.repository.UserRepository;
-import br.com.flexpag.payments.service.TokenService;
+import br.com.flexpag.payments.service.impl.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

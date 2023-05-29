@@ -1,6 +1,7 @@
-package br.com.flexpag.payments.service;
+package br.com.flexpag.payments.service.impl;
 
 import br.com.flexpag.payments.model.user.User;
+import br.com.flexpag.payments.service.TokenServiceContract;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Service
-public class TokenService {
+public class TokenService implements TokenServiceContract {
 
     @Value("${api.security.token.secret}")
     private String secret;

@@ -1,14 +1,15 @@
-package br.com.flexpag.payments.service;
+package br.com.flexpag.payments.service.impl;
 
 import br.com.flexpag.payments.controller.dto.request.CreateClientData;
 import br.com.flexpag.payments.model.client.Client;
 import br.com.flexpag.payments.repository.ClientRepository;
+import br.com.flexpag.payments.service.ClientServiceContract;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClientService {
+public class ClientService implements ClientServiceContract {
 
     @Autowired
     ClientRepository clientRepository;

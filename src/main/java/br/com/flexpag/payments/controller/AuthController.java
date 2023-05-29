@@ -3,7 +3,7 @@ package br.com.flexpag.payments.controller;
 import br.com.flexpag.payments.controller.dto.request.CredentialsData;
 import br.com.flexpag.payments.controller.dto.response.TokenResponse;
 import br.com.flexpag.payments.model.user.User;
-import br.com.flexpag.payments.service.TokenService;
+import br.com.flexpag.payments.service.impl.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

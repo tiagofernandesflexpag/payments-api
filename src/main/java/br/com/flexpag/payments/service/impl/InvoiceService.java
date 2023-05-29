@@ -1,19 +1,19 @@
-package br.com.flexpag.payments.service;
+package br.com.flexpag.payments.service.impl;
 
 import br.com.flexpag.payments.controller.dto.request.InvoiceData;
 import br.com.flexpag.payments.model.invoice.Invoice;
 import br.com.flexpag.payments.model.purchase.Purchase;
 import br.com.flexpag.payments.repository.InvoiceRepository;
 import br.com.flexpag.payments.repository.PurchaseRepository;
+import br.com.flexpag.payments.service.InvoiceServiceContract;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class InvoiceService {
+public class InvoiceService implements InvoiceServiceContract {
 
     @Autowired
     InvoiceRepository invoiceRepository;
