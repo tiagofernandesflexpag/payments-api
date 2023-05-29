@@ -4,7 +4,7 @@ import br.com.flexpag.payments.model.user.User;
 
 public interface TokenServiceContract {
 
-    String createToken(User user);
+    String gerarToken(User user);
 
     String getSubject(String tokenJWT);
 

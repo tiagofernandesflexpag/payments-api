@@ -19,15 +19,15 @@ public class TokenService implements TokenServiceContract {
     @Value("${api.security.token.secret}")
     private String secret;
 
-    public String createToken(User user) {
+    public String gerarToken(User user) {
         try {
-            var algorithm = Algorithm.HMAC256(secret);
+            var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("Payments API")
+                    .withIssuer("PaymentAPI")
                     .withSubject(user.getEmail())
                     .withClaim("id", user.getId())
                     .withExpiresAt(expireDate())
-                    .sign(algorithm);
+                    .sign(algoritmo);
         } catch (JWTCreationException exception) {
             throw new RuntimeException("Erro ao gerar token JWT" + exception);
         }
@@ -37,7 +37,7 @@ public class TokenService implements TokenServiceContract {
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
-                    .withIssuer("Payments API")
+                    .withIssuer("PaymentAPI")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();
@@ -50,9 +50,9 @@ public class TokenService implements TokenServiceContract {
     private Instant expireDate() {
         return LocalDateTime
                 .now()
-                .plusHours(24)
+                .plusHours(2)
                 .toInstant(ZoneOffset
-                        .of("-03:00")); //metodos encadeados
+                        .of("-03:00"));
     }
 
 }

@@ -1,7 +1,6 @@
 package br.com.flexpag.payments.service.impl;
 
 import br.com.flexpag.payments.controller.dto.request.PurchaseData;
-import br.com.flexpag.payments.controller.dto.response.PurchaseResponse;
 import br.com.flexpag.payments.model.client.Client;
 import br.com.flexpag.payments.model.invoice.Invoice;
 import br.com.flexpag.payments.model.purchase.Purchase;

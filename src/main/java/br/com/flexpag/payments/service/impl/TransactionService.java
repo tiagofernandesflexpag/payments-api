@@ -7,7 +7,6 @@ import br.com.flexpag.payments.model.transaction.enums.StatusEnum;
 import br.com.flexpag.payments.repository.PurchaseRepository;
 import br.com.flexpag.payments.repository.TransactionRepository;
 import br.com.flexpag.payments.service.TransactionServiceContract;
-import br.com.flexpag.payments.service.impl.InvoiceService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
