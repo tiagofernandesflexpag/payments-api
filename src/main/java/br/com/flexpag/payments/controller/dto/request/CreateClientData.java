@@ -6,20 +6,18 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record CreateClientData(
+        @NotNull
+        Long userId,
         @NotBlank
         String name,
         @NotBlank
         String identity,
-        @NotBlank
+        @NotNull
         ContractTypeEnum contract,
-        @NotBlank
-        String email,
-        @NotBlank
-        String password,
         @NotNull
         Long contractNumber,
-        @NotBlank
+        @NotNull
         @Valid
-        AddressData address
+        AddressData address //fazer o contrato do createUser
 
 ) {}

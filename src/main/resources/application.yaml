@@ -9,3 +9,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
     show-sql: true
+api:
+  security:
+    token:
+      secret: 55789854

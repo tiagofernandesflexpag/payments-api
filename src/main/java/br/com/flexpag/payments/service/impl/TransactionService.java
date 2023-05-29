@@ -1,4 +1,4 @@
-package br.com.flexpag.payments.service;
+package br.com.flexpag.payments.service.impl;
 
 import br.com.flexpag.payments.controller.dto.request.PersistTransactionData;
 import br.com.flexpag.payments.exceptions.PaymentStatusException;
@@ -6,6 +6,7 @@ import br.com.flexpag.payments.model.transaction.Transaction;
 import br.com.flexpag.payments.model.transaction.enums.StatusEnum;
 import br.com.flexpag.payments.repository.PurchaseRepository;
 import br.com.flexpag.payments.repository.TransactionRepository;
+import br.com.flexpag.payments.service.TransactionServiceContract;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 import static br.com.flexpag.payments.util.RandomPaymentStatus.getRandomStatus;
 
 @Service
-public class TransactionService {
+public class TransactionService implements TransactionServiceContract {
 
     @Autowired
     TransactionRepository transactionRepository;
@@ -44,6 +45,5 @@ public class TransactionService {
         return savedTransaction;
 
     }
-
 
 }
