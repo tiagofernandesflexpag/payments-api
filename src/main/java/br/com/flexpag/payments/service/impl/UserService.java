@@ -3,12 +3,13 @@ package br.com.flexpag.payments.service.impl;
 import br.com.flexpag.payments.controller.dto.request.CreateUserData;
 import br.com.flexpag.payments.model.user.User;
 import br.com.flexpag.payments.repository.UserRepository;
+import br.com.flexpag.payments.service.UserServiceContract;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UserService implements UserServiceContract {
 
     @Autowired
     UserRepository userRepository;
