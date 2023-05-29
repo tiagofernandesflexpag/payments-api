@@ -5,7 +5,6 @@ import br.com.flexpag.payments.controller.dto.request.CreateClientData;
 import br.com.flexpag.payments.model.BaseEntity;
 import br.com.flexpag.payments.model.address.Address;
 import br.com.flexpag.payments.model.client.enums.ContractTypeEnum;
-import br.com.flexpag.payments.model.client.enums.UserRole;
 import br.com.flexpag.payments.model.purchase.Purchase;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -29,17 +28,13 @@ public class Client extends BaseEntity implements Assignment {
     private Long id;
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
+    private Long userId;
     private String name;
     private String identity;
 
     @Enumerated(EnumType.STRING)
     private ContractTypeEnum contract;
     private Long contractNumber;
-    private String email;
-    private String password;
-
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
@@ -56,13 +51,11 @@ public class Client extends BaseEntity implements Assignment {
 
     public Client(CreateClientData clientData) {
         this.uuid = UUID.randomUUID();
+        this.userId = clientData.userId();
         this.name = clientData.name();
         this.identity = clientData.identity();
         this.contract = clientData.contract();
         this.contractNumber = clientData.contractNumber();
-        this.email = clientData.email();
-        this.password = clientData.password();
-        this.role = this.getRole();
         this.address = new Address(clientData.address());
         setCreatedAt(LocalDate.now());
         setUpdatedAt(LocalDate.now());

@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class AuthController {
 
-    @Autowired //pedindo ao spring para instanciar
-    private AuthenticationManager manager; //Objeto que é responsável pela chamada do método dentro das configs do sec;
+    @Autowired
+    private AuthenticationManager manager;
 
     @Autowired
     private TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity efetuarLogin(@RequestBody @Valid AuthData authData){
+    public ResponseEntity auth(@RequestBody @Valid AuthData authData){
 
         var authToken = new UsernamePasswordAuthenticationToken(authData.email(), authData.password());
         var authentication = manager.authenticate(authToken);

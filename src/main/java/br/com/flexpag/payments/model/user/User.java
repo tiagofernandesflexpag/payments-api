@@ -1,12 +1,15 @@
 package br.com.flexpag.payments.model.user;
 
+import br.com.flexpag.payments.controller.dto.request.CreateUserData;
 import br.com.flexpag.payments.model.BaseEntity;
+import br.com.flexpag.payments.model.user.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.UUID;
 import java.util.List;
@@ -29,6 +32,18 @@ public class User extends BaseEntity implements UserDetails {
     private String email;
 
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+
+    public User(CreateUserData createUserData, String encryptedPassword) {
+        this.uuid = UUID.randomUUID();
+        this.email = createUserData.email();
+        this.password = encryptedPassword;
+        this.role = createUserData.userRole();
+        setCreatedAt(LocalDate.now());
+        setUpdatedAt(LocalDate.now());
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
