@@ -1,0 +1,312 @@
+{
+	"info": {
+		"_postman_id": "354e1eb8-56aa-4654-bb4a-1d4ff1b95171",
+		"name": "Payments Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27776452"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"teste_collection@gmail.com\",\r\n\t\"password\": \"123\",\r\n\t\"userRole\": \"USER_ROLE_REGULAR\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"teste_collection@gmail.com\",\r\n\t\"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CEP Query",
+			"item": [
+				{
+					"name": "Query CEP",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/consulta-cep/53130030",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"consulta-cep",
+								"53130030"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Client Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZV9jb2xsZWN0aW9uQGdtYWlsLmNvbSIsImlzcyI6IlBheW1lbnRBUEkiLCJpZCI6MTIsImV4cCI6MTY4NTczODI2MH0.ovOCyNQ5JW-GpOBi_oJG9vGtmsZ1zWa-gJ7e_W8_sDc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"userId\": 9,\r\n\t\"name\": \"Teste Final\",\r\n\t\"identity\": \"02062023\",\r\n\t\"contract\": \"PF\",\r\n\t\"contractNumber\": \"02062023\",\r\n\t\"address\": {\r\n\t\"street\": \"Rua Joana Noberto Pessoa\",\r\n\t\"number\": 943,\r\n\t\"city\": \"Olinda\",\r\n\t\"state\": \"PE\",\r\n\t\"complement\": \"AP202\"\r\n\t\t}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/client",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Create Invoice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZV9jb2xsZWN0aW9uQGdtYWlsLmNvbSIsImlzcyI6IlBheW1lbnRBUEkiLCJpZCI6MTIsImV4cCI6MTY4NTczODI2MH0.ovOCyNQ5JW-GpOBi_oJG9vGtmsZ1zWa-gJ7e_W8_sDc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"amount\": 120,\r\n\t\"barcode\": \"ABC123456FF89\",\r\n\t\"contractNumber\": 2062023,\r\n\t\"dueDate\": \"2023-06-03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/invoices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get invoices",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZV9jb2xsZWN0aW9uQGdtYWlsLmNvbSIsImlzcyI6IlBheW1lbnRBUEkiLCJpZCI6MTIsImV4cCI6MTY4NTczODI2MH0.ovOCyNQ5JW-GpOBi_oJG9vGtmsZ1zWa-gJ7e_W8_sDc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/invoices/2062023",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"invoices",
+								"2062023"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Persist Purchase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZV9jb2xsZWN0aW9uQGdtYWlsLmNvbSIsImlzcyI6IlBheW1lbnRBUEkiLCJpZCI6MTIsImV4cCI6MTY4NTczODI2MH0.ovOCyNQ5JW-GpOBi_oJG9vGtmsZ1zWa-gJ7e_W8_sDc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"amount\": 500,\r\n\t\"invoiceAmount\": \"3\",\r\n\t\"rate\": \"1.0\",\r\n\t\"clientId\": 5,\r\n\t\"invoiceIds\": [8]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/purchase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Persist Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZV9jb2xsZWN0aW9uQGdtYWlsLmNvbSIsImlzcyI6IlBheW1lbnRBUEkiLCJpZCI6MTIsImV4cCI6MTY4NTczODI2MH0.ovOCyNQ5JW-GpOBi_oJG9vGtmsZ1zWa-gJ7e_W8_sDc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"amount\": 500,\r\n\t\"invoiceAmount\": \"3\",\r\n\t\"rate\": \"1.0\",\r\n\t\"clientId\": 5,\r\n\t\"invoiceIds\": [8]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/purchase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

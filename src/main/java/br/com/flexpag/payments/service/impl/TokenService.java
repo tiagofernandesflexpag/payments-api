@@ -15,10 +15,8 @@ import java.time.ZoneOffset;
 
 @Service
 public class TokenService implements TokenServiceContract {
-
     @Value("${api.security.token.secret}")
     private String secret;
-
     public String gerarToken(User user) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
@@ -32,7 +30,6 @@ public class TokenService implements TokenServiceContract {
             throw new RuntimeException("Erro ao gerar token JWT" + exception);
         }
     }
-
     public String getSubject(String tokenJWT){
         try {
             var algorithm = Algorithm.HMAC256(secret);
