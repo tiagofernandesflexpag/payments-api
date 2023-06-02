@@ -1,7 +1,7 @@
 
 # Documentação da API de Pagamentos
 
-Este repositório contém uma coleção do Postman para a API de Pagamentos. A coleção oferece um conjunto de endpoints para interagir com vários aspectos do sistema de pagamentos.
+Este repositório contém a API de Pagamentos Flexpag. A coleção oferece um conjunto de endpoints para interagir com vários aspectos do sistema de pagamentos.
 
 ## Uso
 Para utilizar a API de Pagamentos, siga as instruções abaixo:
